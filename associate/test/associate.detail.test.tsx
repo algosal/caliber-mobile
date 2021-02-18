@@ -1,7 +1,7 @@
 /**
  * @jest-environment jsdom
  */
-import Enzyme from 'enzyme';
+import { shallow } from 'enzyme';
 import React from 'react';
 import 'react-native';
 import 'jest-enzyme';
@@ -23,7 +23,7 @@ testAssociate.associateId = testFeedback.associateId;
 testAssociate.firstName = 'testFN';
 testAssociate.lastName = 'testLN';
 
-const wrapper = Enzyme.mount(
+const wrapper = shallow(
     <AssociateDetail associate={testAssociate} qcFeedback={testFeedback} />
 );
 
