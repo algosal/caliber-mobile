@@ -8,13 +8,13 @@ import {Router} from './router/router';
 import RouterComponent from './router/router.component';
 
 export default function App() {
-	return (
-		<Provider store={store}>
-			<NavigationContainer>
-				<RouterComponent />
-			</NavigationContainer>
-		</Provider>
-	);
+  return (
+    <Provider store={store}>
+      <View style={styles.container}>
+        <Text>Open up App.tsx to start working on your app!</Text>
+      </View>
+    </Provider>
+  );
 }
 
 const styles = StyleSheet.create({
