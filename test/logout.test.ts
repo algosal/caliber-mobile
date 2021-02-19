@@ -10,7 +10,7 @@ jest.mock('firebase/app', () => {
 describe('is user logged out', () => {
   it('should not return user', () => {
     (firebase.auth as jest.Mocked<any>).mockReturnValueOnce({
-      currentUser: { undefined},
+      currentUser: {undefined},
     });
     const actual = Logout.getLoggedOutUser();
     expect(actual).toEqual({
