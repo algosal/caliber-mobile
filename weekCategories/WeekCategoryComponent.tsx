@@ -5,7 +5,6 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 export default function CategoryButton(props: any) {
   var [categoryContext, setCategoryContext] = useState(props.data.skill);
-  console.log(props)
   return (
     <View style={[styles.screenContainer]}>
       <Text style={styles.myFontColor}>{categoryContext + "  "}
