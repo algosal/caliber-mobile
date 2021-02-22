@@ -53,22 +53,16 @@ export class QcWeek {
 
 }
 
+// define types
+export type Status = undefined | 'POOR' | 'GOOD' | 'AVERAGE' | 'SUPERSTAR' ;
+export type QcNoteType = string;
 export class QcNote {
     public id: number =0;
     public batchId: string ='';
     public associateId: string='';
     public week: number =1;
-    public technicalStatus: Status ='Good';
-    public softSkillStatus: Status ='Good';
+    public technicalStatus: Status = 'GOOD';
     public content: string ='';
     public type: QcNoteType = '';
-
-}
-
-interface Status {
- 
-}
-
-interface QcNoteType {
 
 }
