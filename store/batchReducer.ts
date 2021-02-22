@@ -5,18 +5,18 @@ import Batch from '../batches/Batch';
 import { initialState } from './initialState';
 
 const batchReducer = (
-	state: CaliberState = initialState,
-	action: Actions.AppAction
+    state: CaliberState = initialState,
+    action: Actions.AppAction
 ): CaliberState => {
-	const newState = { ...state };
+    const newState = { ...state };
 
-	switch (action.type) {
-		case Actions.BatchActions.GetBatches:
-			newState.batches = action.payload as Batch[];
-			return newState;
-		default:
-			return state;
-	}
-};
+    switch (action.type) {
+        case Actions.BatchActions.GetBatches:
+            newState.batches = action.payload as Batch[];
+            return newState;
+        default:
+            return state;
+    }
+}
 
 export default batchReducer;
