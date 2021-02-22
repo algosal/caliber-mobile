@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
-
+/**Displays each value of category array through props */
 
 export default function CategoryButton(props: any) {
   var [categoryContext, setCategoryContext] = useState(props.data.skill);
