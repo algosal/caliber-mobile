@@ -54,14 +54,14 @@ export class QcWeek {
 }
 
 // define types
-export type Status = undefined | 'POOR' | 'GOOD' | 'AVERAGE' | 'SUPERSTAR' ;
+export type Status = undefined | 'POOR' | 'AVERAGE' | 'GOOD' | 'SUPERSTAR' ;
 export type QcNoteType = string;
 export class QcNote {
     public id: number =0;
     public batchId: string ='';
     public associateId: string='';
     public week: number =1;
-    public technicalStatus: Status = 'GOOD';
+    public technicalStatus?: Status;
     public content: string ='';
     public type: QcNoteType = '';
 
