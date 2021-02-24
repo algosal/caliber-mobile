@@ -12,11 +12,11 @@ export default function WeekSelectionComponent() {
 
     const [weeks, setWeeks] = useState([] as QcWeek[]);
 
-    useEffect(() => {
+    /* useEffect(() => {
         // Get the weeks in the redux store
         setWeeks(useSelector((state: WeekState) => state.weeks));
 
-    }, []);
+    }, []); */
 
     function onWeekSelect(weekValue: number) {
         // Update the redux store with the selected week

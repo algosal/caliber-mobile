@@ -33,7 +33,7 @@ class BatchWeekService {
 
 
      // POST function for  many qc_notes /batches/{batchId}/weeks/{weekid}
-     addNewQcNote(qn: QcNote []): Promise<null> {
+     addNewQcNote(qn: QcWeek[]): Promise<null> {
         let pathname = `batches/${qn[0].batchId}/weeks/${qn[0].week}`;
         return axios.post(this.URI + pathname, qn).then(result => null);
     }
