@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, Image, ActivityIndicator, Pressable } from 'react-native';
+import React from 'react';
+import { View, Text, Pressable } from 'react-native';
 import { Card } from 'react-native-elements';
 import { FlatList } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 
-export default function QuarterComponent({route}) {
+export default function QuarterComponent({route}: any) {
     const nav = useNavigation();
-    const [quarterFilter, setQuarterFilter] = useState('');
     const keyExtractor = (item: object, index: number) => {
         return index.toString();
     };
@@ -15,13 +14,13 @@ export default function QuarterComponent({route}) {
 
     const quarters: any = ['All Quarters', 'Q1', 'Q2', 'Q3', 'Q4'];
 
-    console.log(route);
-    console.log(year);
+    // Sets the quarter and navigates to the batch list
     function handleQuarterSelect(index: number) {
         const quarter = quarters[index];
         nav.navigate('Batches', {year: year, quarter: quarter});
     }
 
+    // Displays a selectable quarter
     const quarterCard = (params: any) => {
         return (
             <Pressable onPress={() => handleQuarterSelect(params.index)}>
@@ -32,6 +31,7 @@ export default function QuarterComponent({route}) {
         )
     }
     
+    // Displays a list of quarters to filter by
     return (
         <View>
             {year !== null && (

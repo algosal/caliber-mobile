@@ -1,19 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import {
-	View,
-	Text,
-	Image,
-	ActivityIndicator,
-	Pressable,
-	Button,
-} from 'react-native';
+import { View, Text, Button, Pressable } from 'react-native';
 import { Card } from 'react-native-elements';
 import { useSelector, useDispatch } from 'react-redux';
 import { FlatList, TextInput } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 
 import { RootState } from '../store/store';
-import { getBatches } from '../store/actions';
+import { getBatches, changeBatch } from '../store/actions';
 import batchService from './BatchService';
 
 interface VisibleBatch {
@@ -34,6 +27,7 @@ export default function BatchListComponent({ route }) {
 	const year = route.params.year;
 	const quarter = quarterToNumber(route.params.quarter);
 
+	// Changes the chosen quarter from a string to a number for use in the filter
 	function quarterToNumber(strQuarter: string) {
 		switch (strQuarter) {
 			case 'Q1':
@@ -47,6 +41,7 @@ export default function BatchListComponent({ route }) {
 		}
 	}
 
+	// Placeholder user
 	const trainer = {
 		role: 'ROLE_QC',
 		email: 'mock1005.employee7c90a542-e70e-4db5-be8b-629e62f851c5@mock.com',
@@ -54,6 +49,7 @@ export default function BatchListComponent({ route }) {
 		lastName: 'Employee 1005',
 	};
 
+	// Retrieves a batch list based on filters
 	useEffect(() => {
 		if (trainer.role === 'ROLE_TRAINER') {
 			batchService
@@ -87,14 +83,17 @@ export default function BatchListComponent({ route }) {
 	console.log(route.params);
 	console.log(year + ' ' + quarter);
 
-	function handleBatchSelect() {
-		//nav.navigate('Batches', props.year, quarter);
-		console.log('Selected Batch');
+	// Upon selection, updates the state with a chosen batch
+	// The navigator's destination is to be replaced in code after determining the next component in line
+	function handleBatchSelect(index: string) {
+		dispatch(changeBatch(batches[Number(index)]));
+		nav.navigate('BatchDetail');
 	}
 
+	// Display a selectable batch
 	const batchCard = (params: any) => {
 		return (
-			<Pressable onPress={handleBatchSelect}>
+			<Pressable onPress={() => handleBatchSelect(params.item.index)}>
 				<Card>
 					<Text>{params.item.info}</Text>
 				</Card>
@@ -102,6 +101,7 @@ export default function BatchListComponent({ route }) {
 		);
 	};
 
+	//Filter based on query
 	const handleSearch = (text: string) => {
 		console.log('Visbile', visibleBatches);
 		let visible: VisibleBatch[] = [];
@@ -129,6 +129,7 @@ export default function BatchListComponent({ route }) {
 		setVisible(visible);
 	};
 
+	// Displays a list of batches based on filters
 	return (
 		<View>
 			<TextInput
