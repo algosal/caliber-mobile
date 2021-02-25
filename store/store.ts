@@ -6,7 +6,8 @@ import weekReducer from './WeekReducer';
 import userReducer from './userReducer';
 import { AppAction } from './actions';
 import Batch from '../batches/batch';
-import { UserInfo, UserInput } from '../user/user';
+import QcWeek from '../batchWeek/QcWeek';
+import { UserInput, UserInfo } from '../user/user';
 
 export interface BatchState {
 	batches: Batch[];
